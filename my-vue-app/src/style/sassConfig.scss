@@ -14,15 +14,18 @@ $red: red;
 .centerBox {
   width: 550px;
   height: 55px;
+  padding-top: -4px;
   margin-left: 200px;
 
   .centerTabs {
     display: flex;
     height: 55px;
+    
     .centerTabs-li {
       width: 85px;
       height: 55px;
-      box-sizing: border-box;
+    
+      
 
       line-height: 55px;
       margin-right: 13px;
@@ -136,11 +139,17 @@ $red: red;
 .siderDiv {
   width: 210px;
   max-width: 210px !important;
+
   z-index: 9999;
 }
 .SiderMenu {
     width: 210px;
     // padding: 10px;
     z-index: 999999;
+}
+
+.ImageMeat {
+  width: 20px;
+  height: 20px;
 }
 

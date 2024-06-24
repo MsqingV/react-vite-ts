@@ -2,7 +2,7 @@
  * @Author: 马双庆 3489627692.qq.com
  * @Date: 2024-06-19 21:09:52
  * @LastEditors: 马双庆 3489627692.qq.com
- * @LastEditTime: 2024-06-24 10:33:08
+ * @LastEditTime: 2024-06-24 20:33:25
  * @FilePath: /vite+ts+react/my-vue-app/src/views/home/homeIndex.tsx
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -25,77 +25,83 @@ import ImageThree from "../../assets/r.webp";
 import ImageFour from "../../assets/t.webp";
 import ImageFive from "../../assets/w.webp";
 import type { SearchProps } from "antd/es/input/Search";
-import { CameraOutlined , MailOutlined , AppstoreOutlined , SettingOutlined } from "@ant-design/icons";
-import type { MenuProps } from 'antd';
-type MenuItem = Required<MenuProps>['items'][number];
+import  RouterList  from "../../router/RouteConfig";
+import {
+  CameraOutlined,
+ 
+} from "@ant-design/icons";
+import type { MenuProps } from "antd";
+import { Link, Outlet } from "react-router-dom";
 
-const items: MenuItem[] = [
-  {
-    key: 'sub1',
-    label: 'Navigation One',
-    icon: <MailOutlined />,
-    children: [
-      {
-        key: 'g1',
-        label: 'Item 1',
-        type: 'group',
-        children: [
-          { key: '1', label: 'Option 1' },
-          { key: '2', label: 'Option 2' },
-        ],
-      },
-      {
-        key: 'g2',
-        label: 'Item 2',
-        type: 'group',
-        children: [
-          { key: '3', label: 'Option 3' },
-          { key: '4', label: 'Option 4' },
-        ],
-      },
-    ],
-  },
-  {
-    key: 'sub2',
-    label: 'Navigation Two',
-    icon: <AppstoreOutlined />,
-    children: [
-      { key: '5', label: 'Option 5' },
-      { key: '6', label: 'Option 6' },
-      {
-        key: 'sub3',
-        label: 'Submenu',
-        children: [
-          { key: '7', label: 'Option 7' },
-          { key: '8', label: 'Option 8' },
-        ],
-      },
-    ],
-  },
-  {
-    type: 'divider',
-  },
-  {
-    key: 'sub4',
-    label: 'Navigation Three',
-    icon: <SettingOutlined />,
-    children: [
-      { key: '9', label: 'Option 9' },
-      { key: '10', label: 'Option 10' },
-      { key: '11', label: 'Option 11' },
-      { key: '12', label: 'Option 12' },
-    ],
-  },
-  {
-    key: 'grp',
-    label: 'Group',
-    type: 'group',
-    children: [
-      { key: '13', label: 'Option 13' },
-      { key: '14', label: 'Option 14' },
-    ],
-  },
-];
+
+
+
+//   {
+//     key: 'sub1',
+//     label: 'Navigation One',
+//     icon: <MailOutlined />,
+//     children: [
+//       {
+//         key: 'g1',
+//         label: 'Item 1',
+//         type: 'group',
+//         children: [
+//           { key: '1', label: 'Option 1' },
+//           { key: '2', label: 'Option 2' },
+//         ],
+//       },
+//       {
+//         key: 'g2',
+//         label: 'Item 2',
+//         type: 'group',
+//         children: [
+//           { key: '3', label: 'Option 3' },
+//           { key: '4', label: 'Option 4' },
+//         ],
+//       },
+//     ],
+//   },
+//   {
+//     key: 'sub2',
+//     label: 'Navigation Two',
+//     icon: <AppstoreOutlined />,
+//     children: [
+//       { key: '5', label: 'Option 5' },
+//       { key: '6', label: 'Option 6' },
+//       {
+//         key: 'sub3',
+//         label: 'Submenu',
+//         children: [
+//           { key: '7', label: 'Option 7' },
+//           { key: '8', label: 'Option 8' },
+//         ],
+//       },
+//     ],
+//   },
+//   {
+//     type: 'divider',
+//   },
+//   {
+//     key: 'sub4',
+//     label: 'Navigation Three',
+//     icon: <SettingOutlined />,
+//     children: [
+//       { key: '9', label: 'Option 9' },
+//       { key: '10', label: 'Option 10' },
+//       { key: '11', label: 'Option 11' },
+//       { key: '12', label: 'Option 12' },
+//     ],
+//   },
+//   {
+//     key: 'grp',
+//     label: 'Group',
+//     type: 'group',
+//     children: [
+//       { key: '13', label: 'Option 13' },
+//       { key: '14', label: 'Option 14' },
+//     ],
+//   },
+// ];
 const { Header, Sider, Content } = Layout;
 
 const headerStyle: React.CSSProperties = {
@@ -114,16 +120,16 @@ const headerStyle: React.CSSProperties = {
 const contentStyle: React.CSSProperties = {
   width: "100%",
   minHeight: "100vh",
-  marginLeft: '210px',
+  marginLeft: "210px",
   backgroundColor: "#cefc",
 };
 
 const siderStyle: React.CSSProperties = {
-  position: 'fixed', // 固定在视口
-  left: 0,            // 左侧边缘对齐
-  top: '55px',        // 距离顶部的距离，假设Header的高度为55px
-  height: 'calc(100vh - 55px)', // 减去Header的高度，如果Header高度可变，这个值可能需要相应调整
-  width: "210px",     // 侧边栏的宽度
+  position: "fixed", // 固定在视口
+  left: 0, // 左侧边缘对齐
+  top: "55px", // 距离顶部的距离，假设Header的高度为55px
+  height: "calc(100vh - 55px)", // 减去Header的高度，如果Header高度可变，这个值可能需要相应调整
+  width: "210px", // 侧边栏的宽度
   maxWidth: "210px",
   backgroundColor: "#ffffff",
   zIndex: 999,
@@ -142,7 +148,6 @@ const layoutStyle = {
   maxWidth: 1920,
   height: "100%",
   minHeight: "100vh",
-
 };
 
 function HomeIndex() {
@@ -221,26 +226,17 @@ function HomeIndex() {
     console.log(info?.source, value);
 
   //菜单
-  const onClick: MenuProps['onClick'] = (e) => {
-    console.log('click ', e);
+  const onClick: MenuProps["onClick"] = (e) => {
+    console.log("click ", e);
   };
 
-
-
-   // 添加一个样式对象用于设置Menu的滚动条
+  // 添加一个样式对象用于设置Menu的滚动条
   const menuStyle: React.CSSProperties = {
-    maxWidth: '210px', // 根据需要设置最大宽度
-    maxHeight: '600px', // 设置菜单的最大高度
-    overflow:'auto',
-    scrollbarWidth: 'none',
-    // 如果需要自定义滚动条样式
-    // '&::-webkit-scrollbar': {
-    //   width: '1px',
-    // },
-    // '&::-webkit-scrollbar-thumb': {
-    //   background: 'rgba(0,0,0,.2)',
-    //   borderRadius: '4px',
-    // },
+    maxWidth: "210px", // 根据需要设置最大宽度
+    maxHeight: "600px", // 设置菜单的最大高度
+    overflow: "auto",
+    scrollbarWidth: "none",
+    
   };
   return (
     <Layout style={layoutStyle}>
@@ -301,13 +297,33 @@ function HomeIndex() {
             onClick={onClick}
             style={menuStyle}
             className="SiderMenu"
-            defaultSelectedKeys={["1"]}
+            defaultSelectedKeys={["/"]}
             defaultOpenKeys={["sub1"]}
             mode="inline"
-            items={items}
-          />
+          >
+            {RouterList.filter(route => route.path !== '/login').map((item) => {
+              return (
+                <Menu.Item
+                  key={item.path}
+                  icon={<img className="ImageMeat" src={item.meta.icon} />}
+                >
+                  <Link to={item.path}>{item.meta.pageTitle}</Link>
+                </Menu.Item>
+              );
+            })}
+          </Menu>
         </Sider>
         <Content style={contentStyle}>
+          {/* <Routes>
+            {RouterList.map((route) => (
+              <Route
+                key={route.path}
+                path={route.path}
+                element={<route.elememt />}
+              />
+            ))}
+          </Routes> */}
+
           <div className="contextTop">
             <div className="contextTop-left">
               <img src={Image} alt="" />
@@ -375,6 +391,7 @@ function HomeIndex() {
               </div>
             </Carousel>
           </div>
+          <Outlet />
         </Content>
       </Layout>
     </Layout>

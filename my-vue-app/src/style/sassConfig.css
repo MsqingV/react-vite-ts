@@ -15,6 +15,7 @@
 .centerBox {
   width: 550px;
   height: 55px;
+  padding-top: -4px;
   margin-left: 200px;
 }
 
@@ -26,7 +27,6 @@
 .centerBox .centerTabs .centerTabs-li {
   width: 85px;
   height: 55px;
-  box-sizing: border-box;
   line-height: 55px;
   margin-right: 13px;
   cursor: pointer;
@@ -156,4 +156,9 @@
 .SiderMenu {
   width: 210px;
   z-index: 999999;
+}
+
+.ImageMeat {
+  width: 20px;
+  height: 20px;
 }
