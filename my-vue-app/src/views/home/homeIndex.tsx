@@ -2,7 +2,7 @@
  * @Author: 马双庆 3489627692.qq.com
  * @Date: 2024-06-19 21:09:52
  * @LastEditors: 马双庆 3489627692.qq.com
- * @LastEditTime: 2024-06-21 20:00:29
+ * @LastEditTime: 2024-06-24 10:33:08
  * @FilePath: /vite+ts+react/my-vue-app/src/views/home/homeIndex.tsx
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -124,8 +124,10 @@ const siderStyle: React.CSSProperties = {
   top: '55px',        // 距离顶部的距离，假设Header的高度为55px
   height: 'calc(100vh - 55px)', // 减去Header的高度，如果Header高度可变，这个值可能需要相应调整
   width: "210px",     // 侧边栏的宽度
-  minWidth: "210px",
+  maxWidth: "210px",
   backgroundColor: "#ffffff",
+  zIndex: 999,
+  scrollbarWidth: "none",
   // ...其他样式
 };
 const highlightStyle = {
@@ -140,6 +142,7 @@ const layoutStyle = {
   maxWidth: 1920,
   height: "100%",
   minHeight: "100vh",
+
 };
 
 function HomeIndex() {
@@ -227,16 +230,17 @@ function HomeIndex() {
    // 添加一个样式对象用于设置Menu的滚动条
   const menuStyle: React.CSSProperties = {
     maxWidth: '210px', // 根据需要设置最大宽度
-    maxHeight: '800px', // 设置菜单的最大高度
-    overflowY: 'auto', // 启用垂直滚动条
+    maxHeight: '600px', // 设置菜单的最大高度
+    overflow:'auto',
+    scrollbarWidth: 'none',
     // 如果需要自定义滚动条样式
-    '&::-webkit-scrollbar': {
-      width: '1px',
-    },
-    '&::-webkit-scrollbar-thumb': {
-      background: 'rgba(0,0,0,.2)',
-      borderRadius: '4px',
-    },
+    // '&::-webkit-scrollbar': {
+    //   width: '1px',
+    // },
+    // '&::-webkit-scrollbar-thumb': {
+    //   background: 'rgba(0,0,0,.2)',
+    //   borderRadius: '4px',
+    // },
   };
   return (
     <Layout style={layoutStyle}>
@@ -292,7 +296,7 @@ function HomeIndex() {
         </div>
       </Header>
       <Layout>
-        <Sider width="15%" style={siderStyle}>
+        <Sider width="210px" className="siderDiv" style={siderStyle}>
           <Menu
             onClick={onClick}
             style={menuStyle}

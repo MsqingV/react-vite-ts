@@ -133,8 +133,14 @@ $red: red;
     }
 }
 
+.siderDiv {
+  width: 210px;
+  max-width: 210px !important;
+  z-index: 9999;
+}
 .SiderMenu {
     width: 210px;
-    padding: 10px;
+    // padding: 10px;
+    z-index: 999999;
 }
 
