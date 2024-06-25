@@ -2,7 +2,7 @@
  * @Author: 马双庆 3489627692.qq.com
  * @Date: 2024-06-19 21:09:52
  * @LastEditors: 马双庆 3489627692.qq.com
- * @LastEditTime: 2024-06-24 20:33:25
+ * @LastEditTime: 2024-06-24 20:51:03
  * @FilePath: /vite+ts+react/my-vue-app/src/views/home/homeIndex.tsx
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -34,74 +34,6 @@ import type { MenuProps } from "antd";
 import { Link, Outlet } from "react-router-dom";
 
 
-
-
-//   {
-//     key: 'sub1',
-//     label: 'Navigation One',
-//     icon: <MailOutlined />,
-//     children: [
-//       {
-//         key: 'g1',
-//         label: 'Item 1',
-//         type: 'group',
-//         children: [
-//           { key: '1', label: 'Option 1' },
-//           { key: '2', label: 'Option 2' },
-//         ],
-//       },
-//       {
-//         key: 'g2',
-//         label: 'Item 2',
-//         type: 'group',
-//         children: [
-//           { key: '3', label: 'Option 3' },
-//           { key: '4', label: 'Option 4' },
-//         ],
-//       },
-//     ],
-//   },
-//   {
-//     key: 'sub2',
-//     label: 'Navigation Two',
-//     icon: <AppstoreOutlined />,
-//     children: [
-//       { key: '5', label: 'Option 5' },
-//       { key: '6', label: 'Option 6' },
-//       {
-//         key: 'sub3',
-//         label: 'Submenu',
-//         children: [
-//           { key: '7', label: 'Option 7' },
-//           { key: '8', label: 'Option 8' },
-//         ],
-//       },
-//     ],
-//   },
-//   {
-//     type: 'divider',
-//   },
-//   {
-//     key: 'sub4',
-//     label: 'Navigation Three',
-//     icon: <SettingOutlined />,
-//     children: [
-//       { key: '9', label: 'Option 9' },
-//       { key: '10', label: 'Option 10' },
-//       { key: '11', label: 'Option 11' },
-//       { key: '12', label: 'Option 12' },
-//     ],
-//   },
-//   {
-//     key: 'grp',
-//     label: 'Group',
-//     type: 'group',
-//     children: [
-//       { key: '13', label: 'Option 13' },
-//       { key: '14', label: 'Option 14' },
-//     ],
-//   },
-// ];
 const { Header, Sider, Content } = Layout;
 
 const headerStyle: React.CSSProperties = {
@@ -314,16 +246,6 @@ function HomeIndex() {
           </Menu>
         </Sider>
         <Content style={contentStyle}>
-          {/* <Routes>
-            {RouterList.map((route) => (
-              <Route
-                key={route.path}
-                path={route.path}
-                element={<route.elememt />}
-              />
-            ))}
-          </Routes> */}
-
           <div className="contextTop">
             <div className="contextTop-left">
               <img src={Image} alt="" />

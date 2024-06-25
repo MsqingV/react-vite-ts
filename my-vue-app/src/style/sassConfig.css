@@ -155,6 +155,7 @@
 
 .SiderMenu {
   width: 210px;
+  padding: 15px;
   z-index: 999999;
 }
 
