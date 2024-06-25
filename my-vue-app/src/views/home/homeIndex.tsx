@@ -2,11 +2,11 @@
  * @Author: 马双庆 3489627692.qq.com
  * @Date: 2024-06-19 21:09:52
  * @LastEditors: 马双庆 3489627692.qq.com
- * @LastEditTime: 2024-06-24 20:51:03
+ * @LastEditTime: 2024-06-25 15:34:28
  * @FilePath: /vite+ts+react/my-vue-app/src/views/home/homeIndex.tsx
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { Layout } from "antd";
 import {
   Dropdown,
@@ -24,15 +24,20 @@ import ImageTwo from "../../assets/q.webp";
 import ImageThree from "../../assets/r.webp";
 import ImageFour from "../../assets/t.webp";
 import ImageFive from "../../assets/w.webp";
+import tabsOne from "../../assets/icon/tabs1.webp";
+import tabsTwo from "../../assets/icon/tabs2.webp";
+import tabsThree from "../../assets/icon/tabs3.webp";
+import tabsFour from "../../assets/icon/tabs4.webp";
+import tabsFive from "../../assets/icon/tabs5.webp";
+import tabsSix from "../../assets/icon/tabs6.webp";
+import tabsSeven from "../../assets/icon/tabs7.webp";
+import tabsEight from "../../assets/icon/tabs8.webp";
+import tabsNine from "../../assets/icon/tabs9.webp";
 import type { SearchProps } from "antd/es/input/Search";
-import  RouterList  from "../../router/RouteConfig";
-import {
-  CameraOutlined,
- 
-} from "@ant-design/icons";
+import RouterList from "../../router/RouteConfig";
+import { CameraOutlined } from "@ant-design/icons";
 import type { MenuProps } from "antd";
 import { Link, Outlet } from "react-router-dom";
-
 
 const { Header, Sider, Content } = Layout;
 
@@ -168,8 +173,52 @@ function HomeIndex() {
     maxHeight: "600px", // 设置菜单的最大高度
     overflow: "auto",
     scrollbarWidth: "none",
-    
   };
+
+  const leftEm = "<";
+  const rightEm = ">";
+  // 定义一个合适的类型，假设是 HTMLDivElement
+  type TabContextRef = HTMLDivElement | null;
+
+  // 创建一个 ref 对象，引用 contextTabs 容器
+  const contextTabsRef = useRef<TabContextRef>(null);
+  // 使用 useState 保存当前滚动位置
+  const [scrollPosition, setScrollPosition] = useState(0);
+  // 保存滚动方向，true 表示向右滚动，false 表示向左滚动
+  const [scrollDirection, setScrollDirection] = useState<boolean>(false);
+
+  // 更新 handleScrollClick 函数
+  const handleScrollClick = (direction: "left" | "right") => {
+    if (contextTabsRef.current) {
+      const tabs = contextTabsRef.current;
+      const currentScrollLeft = tabs.scrollLeft;
+      const scrollWidth = tabs.scrollWidth;
+      const clientWidth = tabs.clientWidth;
+
+      // 计算新的滚动位置
+      const newScrollLeft =
+        direction === "left"
+          ? currentScrollLeft - clientWidth
+          : currentScrollLeft + clientWidth;
+
+      // 如果是点击右侧箭头并且到达最左边，或者点击左侧箭头到达最右边，则切换显示另一个箭头
+      if (direction === "right" && newScrollLeft >= scrollWidth - clientWidth) {
+        setScrollDirection(true); // 显示左侧箭头
+      } else if (direction === "left" && newScrollLeft <= 0) {
+        setScrollDirection(false); // 显示右侧箭头
+      }
+
+      // 更新滚动位置状态
+      setScrollPosition(newScrollLeft);
+
+      // 实际滚动操作
+      tabs.scrollTo({
+        left: newScrollLeft,
+        behavior: "smooth",
+      });
+    }
+  };
+
   return (
     <Layout style={layoutStyle}>
       <Header style={headerStyle}>
@@ -233,16 +282,18 @@ function HomeIndex() {
             defaultOpenKeys={["sub1"]}
             mode="inline"
           >
-            {RouterList.filter(route => route.path !== '/login').map((item) => {
-              return (
-                <Menu.Item
-                  key={item.path}
-                  icon={<img className="ImageMeat" src={item.meta.icon} />}
-                >
-                  <Link to={item.path}>{item.meta.pageTitle}</Link>
-                </Menu.Item>
-              );
-            })}
+            {RouterList.filter((route) => route.path !== "/login").map(
+              (item) => {
+                return (
+                  <Menu.Item
+                    key={item.path}
+                    icon={<img className="ImageMeat" src={item.meta.icon} />}
+                  >
+                    <Link to={item.path}>{item.meta.pageTitle}</Link>
+                  </Menu.Item>
+                );
+              }
+            )}
           </Menu>
         </Sider>
         <Content style={contentStyle}>
@@ -313,6 +364,53 @@ function HomeIndex() {
               </div>
             </Carousel>
           </div>
+
+          <div className="contextTabs" ref={contextTabsRef}>
+            <span
+              className={`contextTabs-left ${scrollDirection ? "" : "hidden"}`}
+              onClick={() => handleScrollClick("left")}
+            >
+              {leftEm}
+            </span>
+            <span
+              className={`contextTabs-right ${
+                !scrollDirection ? "" : "hidden"
+              }`}
+              onClick={() => handleScrollClick("right")}
+            >
+              {rightEm}
+            </span>
+            <ul>
+              <li>
+                <img src={tabsOne} alt="" />
+              </li>
+              <li>
+                <img src={tabsTwo} alt="" />
+              </li>
+              <li>
+                <img src={tabsThree} alt="" />
+              </li>
+              <li>
+                <img src={tabsFour} alt="" />
+              </li>
+              <li>
+                <img src={tabsFive} alt="" />
+              </li>
+              <li>
+                <img src={tabsSix} alt="" />
+              </li>
+              <li>
+                <img src={tabsSeven} alt="" />
+              </li>
+              <li>
+                <img src={tabsEight} alt="" />
+              </li>
+              <li>
+                <img src={tabsNine} alt="" />
+              </li>
+            </ul>
+          </div>
+
           <Outlet />
         </Content>
       </Layout>
