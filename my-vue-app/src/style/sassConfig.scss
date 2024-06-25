@@ -156,7 +156,6 @@ $red: red;
   width: 1150px;
   overflow: hidden;
 
-
   ul {
     width: 100%;
     height: 88px;
@@ -172,12 +171,14 @@ $red: red;
         height: 88px;
         transition: 10s;
         cursor: pointer;
+        transition: transform 0.3s ease; /* 平滑过渡效果 */
+        display: block; /* 确保img是块级元素，以便应用transform属性 */
       }
     }
   }
 }
 
- .contextTabs-right {
+.contextTabs-right {
   width: 40px;
   height: 40px;
   display: inline-block;
@@ -192,6 +193,7 @@ $red: red;
   top: 510px;
   cursor: pointer;
   user-select: none;
+  z-index: 99999;
 }
 
 .contextTabs-left {
@@ -209,11 +211,11 @@ $red: red;
   top: 510px;
   cursor: pointer;
   user-select: none;
+  z-index: 99999;
 }
 
-
-
-.contextTabs-left.reversed, .contextTabs-right.reversed {
+.contextTabs-left.reversed,
+.contextTabs-right.reversed {
   /* 箭头取反的样式，例如改变背景颜色或旋转箭头图标 */
   transform: scaleX(-1);
 }
@@ -230,4 +232,12 @@ $red: red;
 
 .hidden {
   display: none;
+}
+
+
+
+/* 悬停状态 */
+.contextTop-ul-for li:hover img {
+  display: inline-block;
+  transform: translateY(-10px);
 }

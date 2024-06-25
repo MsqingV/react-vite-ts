@@ -2,7 +2,7 @@
  * @Author: 马双庆 3489627692.qq.com
  * @Date: 2024-06-19 21:09:52
  * @LastEditors: 马双庆 3489627692.qq.com
- * @LastEditTime: 2024-06-25 15:34:28
+ * @LastEditTime: 2024-06-25 20:06:17
  * @FilePath: /vite+ts+react/my-vue-app/src/views/home/homeIndex.tsx
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -58,7 +58,7 @@ const contentStyle: React.CSSProperties = {
   width: "100%",
   minHeight: "100vh",
   marginLeft: "210px",
-  backgroundColor: "#cefc",
+  backgroundColor: "#ffffff",
 };
 
 const siderStyle: React.CSSProperties = {
@@ -380,7 +380,7 @@ function HomeIndex() {
             >
               {rightEm}
             </span>
-            <ul>
+            <ul className="contextTop-ul-for">
               <li>
                 <img src={tabsOne} alt="" />
               </li>
