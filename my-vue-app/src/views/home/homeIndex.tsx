@@ -2,7 +2,7 @@
  * @Author: 马双庆 3489627692.qq.com
  * @Date: 2024-06-19 21:09:52
  * @LastEditors: 马双庆 3489627692.qq.com
- * @LastEditTime: 2024-06-25 20:06:17
+ * @LastEditTime: 2024-06-26 11:28:37
  * @FilePath: /vite+ts+react/my-vue-app/src/views/home/homeIndex.tsx
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -33,6 +33,7 @@ import tabsSix from "../../assets/icon/tabs6.webp";
 import tabsSeven from "../../assets/icon/tabs7.webp";
 import tabsEight from "../../assets/icon/tabs8.webp";
 import tabsNine from "../../assets/icon/tabs9.webp";
+import rili from '../../assets/icon/日历.webp'
 import type { SearchProps } from "antd/es/input/Search";
 import RouterList from "../../router/RouteConfig";
 import { CameraOutlined } from "@ant-design/icons";
@@ -411,6 +412,34 @@ function HomeIndex() {
             </ul>
           </div>
 
+          <div className="sumbit">
+            <div className="sumbitTop">
+               <div className="sumbitTop-one">
+                  <h1>今日推荐</h1>
+                  <span>开通会员免费用</span>
+               </div>
+               <ul className="sumbitTop-two">
+                 <li>精选推荐</li>
+                 <li>热点关注</li>
+                 <li>国际禁毒日</li>
+                 <li>建党节</li>
+                 <li>小暑</li>
+                 <li>毕业季</li>
+               </ul>
+               <span className="sumbitTop-three">查看更多 {rightEm}</span>
+            </div>
+            <div className="sumbitButton">
+              <div className="sumbitButton-left">
+                <div className="sumbitButton-left-top">
+                  <span className="sumbitButton-left-top-jia">+</span>
+                  <span className="sumbitButton-left-top-text">空白创建</span>
+                </div>
+                <div className="sumbitButton-left-top-img">
+                  <img src={rili} alt="" />
+                </div>
+              </div>
+            </div>
+          </div>
           <Outlet />
         </Content>
       </Layout>
