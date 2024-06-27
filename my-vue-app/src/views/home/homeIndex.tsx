@@ -2,7 +2,7 @@
  * @Author: 马双庆 3489627692.qq.com
  * @Date: 2024-06-19 21:09:52
  * @LastEditors: 马双庆 3489627692.qq.com
- * @LastEditTime: 2024-06-26 11:28:37
+ * @LastEditTime: 2024-06-27 11:54:47
  * @FilePath: /vite+ts+react/my-vue-app/src/views/home/homeIndex.tsx
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -33,7 +33,15 @@ import tabsSix from "../../assets/icon/tabs6.webp";
 import tabsSeven from "../../assets/icon/tabs7.webp";
 import tabsEight from "../../assets/icon/tabs8.webp";
 import tabsNine from "../../assets/icon/tabs9.webp";
-import rili from '../../assets/icon/日历.webp'
+import rili from "../../assets/icon/日历.webp";
+
+import aaa from "../../assets/image/aaa.gif";
+import bbb from "../../assets/image/aab.webp";
+import ccc from "../../assets/image/aac.webp";
+import ddd from "../../assets/image/aad.webp";
+import eee from "../../assets/image/aae.webp";
+import fff from "../../assets/image/aaf.webp";
+import yyy from '../../assets/image/yyy.webp'
 import type { SearchProps } from "antd/es/input/Search";
 import RouterList from "../../router/RouteConfig";
 import { CameraOutlined } from "@ant-design/icons";
@@ -219,6 +227,52 @@ function HomeIndex() {
       });
     }
   };
+
+
+
+   // 定义一个合适的类型，假设是 HTMLDivElement
+  type SumContextRef = HTMLDivElement | null;
+
+  // 创建一个 ref 对象，引用 contextTabs 容器
+  const sumnitRightRef = useRef<SumContextRef>(null);
+  // 使用 useState 保存当前滚动位置
+  const [OnscrollPosition, OnsetScrollPosition] = useState(0);
+  // 保存滚动方向，true 表示向右滚动，false 表示向左滚动
+  const [OnscrollDirection, OnsetScrollDirection] = useState<boolean>(false);
+
+  // 更新 handleScrollClick 函数
+  const OnhandleScrollClick = (direction: "left" | "right") => {
+    if (sumnitRightRef.current) {
+      const tabs = sumnitRightRef.current;
+      const currentScrollLeft = tabs.scrollLeft;
+      const scrollWidth = tabs.scrollWidth;
+      const clientWidth = tabs.clientWidth;
+
+      // 计算新的滚动位置
+      const newScrollLeft =
+        direction === "left"
+          ? currentScrollLeft - clientWidth
+          : currentScrollLeft + clientWidth;
+
+      // 如果是点击右侧箭头并且到达最左边，或者点击左侧箭头到达最右边，则切换显示另一个箭头
+      if (direction === "right" && newScrollLeft >= scrollWidth - clientWidth) {
+        OnsetScrollDirection(true); // 显示左侧箭头
+      } else if (direction === "left" && newScrollLeft <= 0) {
+        OnsetScrollDirection(false); // 显示右侧箭头
+      }
+
+      // 更新滚动位置状态
+      OnsetScrollPosition(newScrollLeft);
+
+      // 实际滚动操作
+      tabs.scrollTo({
+        left: newScrollLeft,
+        behavior: "smooth",
+      });
+    }
+  };
+
+ 
 
   return (
     <Layout style={layoutStyle}>
@@ -414,19 +468,19 @@ function HomeIndex() {
 
           <div className="sumbit">
             <div className="sumbitTop">
-               <div className="sumbitTop-one">
-                  <h1>今日推荐</h1>
-                  <span>开通会员免费用</span>
-               </div>
-               <ul className="sumbitTop-two">
-                 <li>精选推荐</li>
-                 <li>热点关注</li>
-                 <li>国际禁毒日</li>
-                 <li>建党节</li>
-                 <li>小暑</li>
-                 <li>毕业季</li>
-               </ul>
-               <span className="sumbitTop-three">查看更多 {rightEm}</span>
+              <div className="sumbitTop-one">
+                <h1>今日推荐</h1>
+                <span>开通会员免费用</span>
+              </div>
+              <ul className="sumbitTop-two">
+                <li>精选推荐</li>
+                <li>热点关注</li>
+                <li>国际禁毒日</li>
+                <li>建党节</li>
+                <li>小暑</li>
+                <li>毕业季</li>
+              </ul>
+              <span className="sumbitTop-three">查看更多 {rightEm}</span>
             </div>
             <div className="sumbitButton">
               <div className="sumbitButton-left">
@@ -437,6 +491,51 @@ function HomeIndex() {
                 <div className="sumbitButton-left-top-img">
                   <img src={rili} alt="" />
                 </div>
+              </div>
+
+              <div className="sumbit-right" ref={sumnitRightRef}>
+                <span
+                  className={`sumbit-right-left ${
+                OnscrollDirection ? "" : "hiddens"
+              }`}
+                  onClick={() => OnhandleScrollClick("left")}
+                >
+                  {leftEm}
+                </span>
+                <span
+                  className={`sumbit-right-right ${
+                !OnscrollDirection ? "" : "hiddens"
+              }`}
+                  onClick={() => OnhandleScrollClick("right")}
+                >
+                  {rightEm}
+                </span>
+                <ul>
+                  <li>
+                    <img src={aaa} alt="" />
+                  </li>
+                  <li>
+                    <img src={bbb} alt="" />
+                  </li>
+                  <li>
+                    <img src={ccc} alt="" />
+                  </li>
+                  <li>
+                    <img src={ddd} alt="" />
+                  </li>
+                  <li>
+                    <img src={eee} alt="" />
+                  </li>
+                  <li>
+                    <img src={fff} alt="" />
+                  </li>
+                  <li>
+                    <img src={yyy} alt="" />
+                  </li>
+                  <li className="cha">
+                    <span>查看更多{rightEm}</span>
+                  </li>
+                </ul>
               </div>
             </div>
           </div>

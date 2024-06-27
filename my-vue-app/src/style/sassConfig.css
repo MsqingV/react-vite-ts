@@ -314,6 +314,7 @@
   line-height: 30px;
   margin-top: 15px;
   margin-left: 150px;
+  color: #ccc;
 }
 
 .sumbit .sumbitTop .sumbitTop-three:hover {
@@ -325,6 +326,7 @@
   width: 100%;
   height: 300px;
   margin-top: 20px;
+  display: flex;
 }
 
 .sumbit .sumbitButton .sumbitButton-left {
@@ -334,7 +336,7 @@
 
 .sumbit .sumbitButton .sumbitButton-left .sumbitButton-left-top {
   width: 100%;
-  height: 150px;
+  height: 170px;
   border: 1px solid #ccc;
   border-radius: 10px;
   display: flex;
@@ -351,17 +353,113 @@
   color: #ffffff;
   font-size: 40px;
   border-radius: 50%;
-  margin-top: 25px;
+  margin-top: 39px;
 }
 
 .sumbit .sumbitButton .sumbitButton-left .sumbitButton-left-top-img {
   width: 100%;
   height: 90px;
-  margin-top: 30px;
+  margin-top: 40px;
 }
 
 .sumbit .sumbitButton .sumbitButton-left .sumbitButton-left-top-img img {
   width: 100%;
   height: 100%;
   border-radius: 10px;
+}
+
+.sumbit .sumbitButton .sumbit-right {
+  width: 950px;
+  height: 100%;
+  display: flex;
+  margin-left: 30px;
+  overflow: hidden;
+}
+
+.sumbit .sumbitButton .sumbit-right ul {
+  width: 930px;
+  height: 100%;
+  display: flex;
+}
+
+.sumbit .sumbitButton .sumbit-right ul li {
+  width: 184px;
+  height: 300px;
+  margin-right: 30px;
+  cursor: pointer;
+}
+
+.sumbit .sumbitButton .sumbit-right ul li img {
+  width: 184px;
+  height: 100%;
+  border-radius: 13px;
+}
+
+.sumbit .sumbitButton .sumbit-right ul .cha {
+  width: 184px;
+  height: 300px;
+  line-height: 300px;
+  margin-right: 30px;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.sumbit .sumbitButton .sumbit-right ul .cha span {
+  display: inline-block;
+  width: 184px;
+  height: 300px;
+  line-height: 300px;
+  font-size: 20px;
+  color: #ccc;
+  cursor: pointer;
+}
+
+.sumbit-right-right {
+  width: 40px;
+  height: 40px;
+  display: inline-block;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.8);
+  color: #74749a;
+  text-align: center;
+  line-height: 40px;
+  font-size: 30px;
+  position: absolute;
+  right: 20px;
+  top: 800px;
+  cursor: pointer;
+  user-select: none;
+  z-index: 99999;
+}
+
+.sumbit-right-left {
+  width: 40px;
+  height: 40px;
+  display: inline-block;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.8);
+  color: #74749a;
+  text-align: center;
+  line-height: 40px;
+  font-size: 30px;
+  position: absolute;
+  left: 446px;
+  top: 800px;
+  cursor: pointer;
+  user-select: none;
+  z-index: 99999;
+}
+
+.sumbit-right-left:hover {
+  background-color: blue;
+  color: #ffffff;
+}
+
+.sumbit-right-right:hover {
+  background-color: blue;
+  color: #ffffff;
+}
+
+.hiddens {
+  display: none;
 }
