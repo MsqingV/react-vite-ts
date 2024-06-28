@@ -2,7 +2,7 @@
  * @Author: 马双庆 3489627692.qq.com
  * @Date: 2024-06-19 21:09:52
  * @LastEditors: 马双庆 3489627692.qq.com
- * @LastEditTime: 2024-06-27 11:54:47
+ * @LastEditTime: 2024-06-27 15:19:34
  * @FilePath: /vite+ts+react/my-vue-app/src/views/home/homeIndex.tsx
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -41,7 +41,8 @@ import ccc from "../../assets/image/aac.webp";
 import ddd from "../../assets/image/aad.webp";
 import eee from "../../assets/image/aae.webp";
 import fff from "../../assets/image/aaf.webp";
-import yyy from '../../assets/image/yyy.webp'
+import yyy from "../../assets/image/yyy.webp";
+import ppp from "../../assets/image/ppp.webp";
 import type { SearchProps } from "antd/es/input/Search";
 import RouterList from "../../router/RouteConfig";
 import { CameraOutlined } from "@ant-design/icons";
@@ -228,9 +229,7 @@ function HomeIndex() {
     }
   };
 
-
-
-   // 定义一个合适的类型，假设是 HTMLDivElement
+  // 定义一个合适的类型，假设是 HTMLDivElement
   type SumContextRef = HTMLDivElement | null;
 
   // 创建一个 ref 对象，引用 contextTabs 容器
@@ -272,7 +271,17 @@ function HomeIndex() {
     }
   };
 
- 
+  // 用于记录当前悬停的li元素索引
+  const [activeIndex, setActiveIndex] = useState(-1);
+
+  // 处理鼠标悬停事件
+  const handleMouseEnter = (index: React.SetStateAction<number>) => {
+    setActiveIndex(index);
+  };
+
+  const handleMouseLeave = () => {
+    setActiveIndex(-1);
+  };
 
   return (
     <Layout style={layoutStyle}>
@@ -496,41 +505,76 @@ function HomeIndex() {
               <div className="sumbit-right" ref={sumnitRightRef}>
                 <span
                   className={`sumbit-right-left ${
-                OnscrollDirection ? "" : "hiddens"
-              }`}
+                    OnscrollDirection ? "" : "hiddens"
+                  }`}
                   onClick={() => OnhandleScrollClick("left")}
                 >
                   {leftEm}
                 </span>
                 <span
                   className={`sumbit-right-right ${
-                !OnscrollDirection ? "" : "hiddens"
-              }`}
+                    !OnscrollDirection ? "" : "hiddens"
+                  }`}
                   onClick={() => OnhandleScrollClick("right")}
                 >
                   {rightEm}
                 </span>
                 <ul>
-                  <li>
+                  <li
+                    onMouseEnter={() => handleMouseEnter(0)}
+                    onMouseLeave={handleMouseLeave}
+                    className={activeIndex === 0 ? "active" : ""}
+                  >
                     <img src={aaa} alt="" />
+                    <span className="LiName">111</span>
                   </li>
-                  <li>
+                  <li
+                    onMouseEnter={() => handleMouseEnter(1)}
+                    onMouseLeave={handleMouseLeave}
+                    className={activeIndex === 1 ? "active" : ""}
+                  >
                     <img src={bbb} alt="" />
+                    <span className="LiName1">111</span>
                   </li>
-                  <li>
+                  <li
+                    onMouseEnter={() => handleMouseEnter(2)}
+                    onMouseLeave={handleMouseLeave}
+                    className={activeIndex === 2 ? "active" : ""}
+                  >
                     <img src={ccc} alt="" />
+                    <span className="LiName2">111</span>
                   </li>
-                  <li>
+                  <li
+                    onMouseEnter={() => handleMouseEnter(3)}
+                    onMouseLeave={handleMouseLeave}
+                    className={activeIndex === 3 ? "active" : ""}
+                  >
                     <img src={ddd} alt="" />
+                    <span className="LiName3">111</span>
                   </li>
-                  <li>
+                  <li
+                    onMouseEnter={() => handleMouseEnter(4)}
+                    onMouseLeave={handleMouseLeave}
+                    className={activeIndex === 4 ? "active" : ""}
+                  >
                     <img src={eee} alt="" />
+                    <span className="LiName4">111</span>
                   </li>
-                  <li>
+                  <li
+                    onMouseEnter={() => handleMouseEnter(5)}
+                    onMouseLeave={handleMouseLeave}
+                    className={activeIndex === 5 ? "active" : ""}
+                  >
                     <img src={fff} alt="" />
+                    <span className="LiName5">111</span>
                   </li>
-                  <li>
+                  <li
+                    onMouseEnter={() => handleMouseEnter(6)}
+                    onMouseLeave={handleMouseLeave}
+                    className={activeIndex === 6 ? "active" : ""}
+                  >
                     <img src={yyy} alt="" />
+                    <span className="LiName6">111</span>
                   </li>
                   <li className="cha">
                     <span>查看更多{rightEm}</span>
@@ -539,6 +583,13 @@ function HomeIndex() {
               </div>
             </div>
           </div>
+
+          <div className="hengImg">
+            <img src={ppp} alt="" />
+          </div>
+
+
+      
           <Outlet />
         </Content>
       </Layout>
